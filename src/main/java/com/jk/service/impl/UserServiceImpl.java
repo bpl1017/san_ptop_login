@@ -6,8 +6,6 @@ import com.jk.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * Created by ASUS on 2018/5/14.
  */
@@ -16,10 +14,31 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
+    @Override
+    public UserBean login(UserBean userBean) {
+        return userDao.login(userBean);
+    }
 
     @Override
-    public List<UserBean> queryUser() {
-        System.out.println(123);
-        return userDao.queryUser();
+    public void updatemima(Integer userid, String passwo3) {
+        userDao.updatemima(userid,passwo3);
+    }
+
+    @Override
+    public Integer querysaverenshu(String format) {
+       Integer  count= userDao.querysaverenshu(format);
+        return count;
+    }
+
+    @Override
+    public Integer queryzongrenshu() {
+        Integer  count=  userDao.queryzongrenshu();
+        return count;
+    }
+
+    @Override
+    public Integer queryloginrenshu(String format) {
+        Integer  count=  userDao.queryloginrenshu(format);
+        return count;
     }
 }
